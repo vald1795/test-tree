@@ -1,8 +1,8 @@
 <template>
     <div class="container">
-        <button class="btn btn-success btn-sm ms-2" :class="{ disabled: isDisabled }" @click="createRoot">Создать
-            корень</button>
-        <button v-if="rootNode" class="btn btn-danger btn-sm ms-2" @click="removeRoot">Удалить корень</button>
+        <button class="btn btn-success btn-sm ms-2" :class="{ disabled: isDisabled }" @click="createRoot">Create
+            root</button>
+        <button v-if="rootNode" class="btn btn-danger btn-sm ms-2" @click="removeRoot">Remove root</button>
 
         <tree-node class="root" v-if="rootNode" :node="rootNode" @updateTree="updateTree" />
     </div>
@@ -22,7 +22,7 @@ export default {
     },
     methods: {
         createRoot() {
-            this.rootNode = { text: 'Корень', children: [] };
+            this.rootNode = { text: 'Root', children: [] };
             this.saveTreeToLocalStorage();
         },
         removeRoot() {

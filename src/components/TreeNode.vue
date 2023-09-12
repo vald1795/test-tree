@@ -3,8 +3,8 @@
     <div class="d-flex align-items-center">
       <span v-if="childrenLength" @click="toggleNode" class="cursor-pointer">{{ isOpen ? '🔼' : '🔽' }}</span>
       <span class="node-text">{{ node.text }}</span>
-      <button class="btn btn-success btn-sm ms-2" @click="addChildNode">Добавить узел</button>
-      <button v-if="node.text !== 'Корень'" class="btn btn-danger btn-sm ms-2" @click="removeNode">Удалить узел</button>
+      <button class="btn btn-success btn-sm ms-2" @click="addChildNode">Add node</button>
+      <button v-if="node.text !== 'Root'" class="btn btn-danger btn-sm ms-2" @click="removeNode">Remove node</button>
     </div>
     <div class="branch" v-if="isOpen && childrenLength">
       <tree-node v-for="(childNode, index) in node.children" :key="index" :node="childNode" @updateTree="updateTree" />
@@ -25,7 +25,8 @@ export default {
   methods: {
     addChildNode() {
       // eslint-disable-next-line vue/no-mutating-props
-      this.node.children.push({ text: "Новый узел", children: [] });
+      this.node.children.push({ text: "New node", children: [] });
+      this.isOpen = true;
       this.updateTree();
     },
     removeNode() {
@@ -63,7 +64,7 @@ export default {
 
 .node-text {
   margin-left: 10px;
-  cursor: pointer;
+  cursor: default;
 }
 
 .cursor-pointer {
